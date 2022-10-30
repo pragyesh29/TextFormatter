@@ -6,18 +6,47 @@ export default function TextForm(props) {
     const handleUpperCase = () => {
         setText(text.toUpperCase())
     }
+    const handleLowerCase = () => {
+        setText(text.toLowerCase())
+    }
     const handleOnChange = (event) => {
         setText(event.target.value)
     }
 
-    const [text, setText] = useState('Enter text...');
+    const handleClearText = () => {
+        setText('')
+    }
+
+    const handleCapitalizeText = () => {
+    }
+
+    const [text, setText] = useState('');
     return (
-        <div>
-            <h1>{props.heading}</h1>
-            <div className="my-3">
-                <textarea id="my-box" rows="5" className="form-control" onChange={handleOnChange} value={text}></textarea>
+        <>
+            <div className='container'>
+                <h1>{props.heading}</h1>
+                <div className="my-3">
+                    <textarea id="my-box" rows="5" placeholder='Enter text...' className="form-control" onChange={handleOnChange} value={text}></textarea>
+                </div>
+                <button className="btn btn-primary m-1" onClick={handleUpperCase}>Convert to Uppercase</button>
+                <button className="btn btn-primary m-1" onClick={handleLowerCase}>Convert to Lowercase</button>
+                <button className="btn btn-primary m-1" onClick={handleClearText}>Clear</button>
+                {/* Implement Capitalize */}
+                <button className="btn btn-danger m-1" onClick={handleCapitalizeText}>Capitalize</button>
+                {/* Implement Remove extra spaces with regex */}
+                <button className="btn btn-danger m-1">Remove Spaces</button>
+                {/* Implement Copy text of textarea */}
+                <button className="btn btn-danger m-1">Copy</button>
             </div>
-            <button className="btn btn-primary" onClick={handleUpperCase}>Convert to Uppercase</button>
-        </div>
+            <hr />
+            <div className="container">
+                <h2>Your text Summary</h2>
+                <p>{text.split(" ").length} words {text.length} characters</p>
+            </div>
+            <div className="container">
+                <h2>Preview</h2>
+                <p style={{ fontFamily: 'Copperplate' }}>{text}</p>
+            </div>
+        </>
     )
 }
