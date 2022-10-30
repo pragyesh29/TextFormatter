@@ -18,6 +18,17 @@ export default function TextForm(props) {
     }
 
     const handleCapitalizeText = () => {
+        let newArr = text.split(" ")
+        let res = ""
+        newArr.forEach(element => {
+            res += element.charAt(0).toUpperCase() + element.slice(1) + " "
+        })
+        setText(res.trim())
+    }
+
+    const handleRemoveSpace = () => {
+        let newArr = text.split(/[ ]+/)
+        setText(newArr.join(" "))
     }
 
     const [text, setText] = useState('');
@@ -31,10 +42,9 @@ export default function TextForm(props) {
                 <button className="btn btn-primary m-1" onClick={handleUpperCase}>Convert to Uppercase</button>
                 <button className="btn btn-primary m-1" onClick={handleLowerCase}>Convert to Lowercase</button>
                 <button className="btn btn-primary m-1" onClick={handleClearText}>Clear</button>
-                {/* Implement Capitalize */}
-                <button className="btn btn-danger m-1" onClick={handleCapitalizeText}>Capitalize</button>
+                <button className="btn btn-primary m-1" onClick={handleCapitalizeText}>Capitalize</button>
                 {/* Implement Remove extra spaces with regex */}
-                <button className="btn btn-danger m-1">Remove Spaces</button>
+                <button className="btn btn-primary m-1" onClick={handleRemoveSpace}>Remove Spaces</button>
                 {/* Implement Copy text of textarea */}
                 <button className="btn btn-danger m-1">Copy</button>
             </div>
