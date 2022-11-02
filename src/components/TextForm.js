@@ -4,9 +4,12 @@ export default function TextForm(props) {
 
     const handleUpperCase = () => {
         setText(text.toUpperCase())
+        props.showalert("Converted to Uppercase!", "success")
     }
     const handleLowerCase = () => {
         setText(text.toLowerCase())
+        props.showalert("Converted to Lowercase!", "success")
+
     }
     const handleOnChange = (event) => {
         setText(event.target.value)
@@ -23,11 +26,13 @@ export default function TextForm(props) {
             res += element.charAt(0).toUpperCase() + element.slice(1) + " "
         })
         setText(res.trim())
+        props.showalert("Text has been Capitalized!", "success")
     }
 
     const handleRemoveSpace = () => {
         let newArr = text.split(/[ ]+/)
         setText(newArr.join(" "))
+        props.showalert("Space has been removed successfully!", "success")
     }
 
     // declaring state
