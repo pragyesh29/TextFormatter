@@ -18,6 +18,10 @@ export default function Navbar(props) {
                             <a className="nav-link" href="/">{props.about}</a>
                         </li>
                     </ul>
+                    {/* Adding purple theme button */}
+                    <div className="colorPlate" onClick={props.toggleTheme} style={{ backgroundColor: 'purple', width: '20px', height: '80%', color: `white`, textAlign: 'center', marginRight: '10px', borderRadius: '10%', border: `2px solid ${(props.mode === 'light') ? 'black' : 'white'}`, cursor: 'pointer' }}>
+                        v
+                    </div>
 
                     {/* Dark mode switch */}
                     {/* If Navbar is dark then the text in label should be light and vice versa */}

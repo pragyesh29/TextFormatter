@@ -35,14 +35,15 @@ export default function TextForm(props) {
         props.showalert("Space has been removed successfully!", "success")
     }
 
-    // declaring state
+    // Declaring State
     const [text, setText] = useState('');
     return (
         <>
             <div className='container'>
                 <h1>{props.heading}</h1>
                 <div className="my-3">
-                    <textarea id="my-box" style={{ background: (props.mode === 'light') ? 'white' : '#0f0e21', color: (props.mode === 'light') ? 'black' : 'white' }} rows="5" placeholder='Enter text...' className="form-control" onChange={handleOnChange} value={text}></textarea>
+                    {/* <textarea id="my-box" style={{ background: (props.mode === 'light') ? 'white' : '#0f0e21', color: (props.mode === 'light') ? 'black' : 'white' }} rows="5" placeholder='Enter text...' className="form-control" onChange={handleOnChange} value={text}></textarea> */}
+                    <textarea id="my-box" style={{ background: (props.mode === 'light') ? 'white' : 'rgb(0,0,0, 0.9)', color: (props.mode === 'light') ? 'black' : 'white' }} rows="5" placeholder='Enter text...' className="form-control" onChange={handleOnChange} value={text}></textarea>
                 </div>
                 <button className="btn btn-primary m-1" onClick={handleUpperCase}>Convert to Uppercase</button>
                 <button className="btn btn-primary m-1" onClick={handleLowerCase}>Convert to Lowercase</button>
@@ -56,7 +57,7 @@ export default function TextForm(props) {
             <hr />
             <div className="container">
                 <h2>Your text Summary</h2>
-                <p>{text.split(" ").length} words {text.length} characters</p>
+                <p>{(text.length === 0) ? text.split(" ").length - 1 : text.split(" ").length} words {text.length} characters</p>
             </div>
             <div className="container">
                 <h2>Preview</h2>
